@@ -1,0 +1,45 @@
+ALGORITHM Sum_Distinct
+VAR
+    set1 : ARRAY_OF INTEGER[n];
+    set2 : ARRAY_OF INTEGER[m]; 
+    i, j : INTEGER;
+    sum : INTEGER := 0;
+    trouve : BOOLEAN;
+BEGIN
+   
+
+    // premiere partie ;Parcourir le premier tableau (set1)
+    FOR i FROM 0 TO set1.length-1 DO
+        trouve := FALSE;
+        // Vérifier si l'élément set1[i] est présent dans set2
+        FOR j FROM 0 TO set2.length-1 DO
+            IF (set1[i] = set2[j]) THEN
+                trouve := TRUE;
+            END_IF
+        END_FOR
+        
+        // si trouve est false alors on ajoute à la somme
+        IF (trouve= FALSE) THEN
+            sum := sum + set1[i];
+        END_IF
+    END_FOR
+
+    // deuxieme partie ;Parcourir le deuxième tableau (set2)
+    FOR i FROM 0 TO set2.length-1 DO
+        trouve := FALSE;
+        // Vérifier si l'élément set2[i] est présent dans set1
+        FOR j FROM 0 TO set1.length-1 DO
+            IF (set2[i] = set1[j]) THEN
+                trouve := TRUE;
+            END_IF
+        END_FOR
+        
+        // si trouve est false alors on ajoute à la somme
+        IF (trouve = FALSE) THEN
+            sum := sum + set2[i];
+        END_IF
+    END_FOR
+
+    // Afficher la somme des elements distinctes
+    Write("La somme des éléments distincts est : ", sum);
+END
