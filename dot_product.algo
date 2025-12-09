@@ -1,21 +1,55 @@
-procedure dot_product(input tab1[], input tab2[])
-    Var 
-    Array tab1[], tab2[] 
-    i:integer=0;
-    j:integer=0;
+//variables globales
+VAR
+    v1, v2 : ARRAY_OF INTEGER[n]; 
+    ps : INTEGER;
+    n, i : INTEGER;
 
-for i=0 to length(tab1)-1 do
-    tab1[i]=
-end
+// procedure dot_product pour calculer le produit scalaire de deux vecteurs
 
-for j=0 to length(tab2)-1 do
-    tab2[j]=tab2[j]
-end
+    PROCEDURE dot_product(v1, v2 : ARRAY_OF INTEGER)
+    VAR
+        i : INTEGER;
 
-for i=0 to length(tab1)-1 do
-    c=c+tab1[i]*tab2[i]
-end
-       
+    BEGIN
+        ps := 0;
+        FOR i FROM 0 TO v1.length-1 DO
+            ps := ps + (v1[i] * v2[i]);
+        END_FOR
+    END_PROCEDURE
 
-    
-end
+   
+//partie 2 :
+//modification des algo
+
+ VAR
+    v1, v2 : ARRAY_OF INTEGER[n]; 
+    ps : INTEGER;
+    i : INTEGER;
+
+    //V1 V2 sont deux vecteurs et n est la longueur des vecteurs
+    //la fonction dot_product_func renvoie le produit scalaire de deux vecteurs
+    FUNCTION dot_product_func(v1, v2 : ARRAY_OF INTEGER,n : INTEGER) : INTEGER
+    VAR
+        ps : INTEGER;
+
+    BEGIN
+        ps := 0;
+        FOR i FROM 0 TO n-1 DO
+            ps := ps + (v1[i] * v2[i]);
+        END_FOR  
+    RETURN ps;
+    END_FUNCTION   
+
+// test si les vecteurs sont orthogonaux
+ALGORITHM orhtogonalTest 
+VAR
+    i : INTEGER;
+    ps : INTEGER;
+BEGIN 
+    ps := dot_product_func(v1,v2,n);
+    IF (ps = 0) THEN
+        Write("Les vecteurs sont orthogonaux parceque le produit scalaire est null");
+    ELSE
+        Write("Les vecteurs ne sont PAS orthogonaux parceque le produit scalaire n'est pas null");
+
+
